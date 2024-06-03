@@ -12,7 +12,7 @@ pipeline{
             }
             post{
                always{
-                emailtext (
+                emailext (
                     to: 'shinehar27@gmail.com',
                     subject: "Unit and Integration Test Status",
                     body: "Unit and Integration Test complete with status: ${currentBuild.currentResult}",
