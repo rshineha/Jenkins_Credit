@@ -12,10 +12,10 @@ pipeline{
             }
             post{
                always{
-                emailext (
+                emailtext (
                     to: 'shinehar27@gmail.com',
                     subject: "Unit and Integration Test Status",
-                    body: "Unit and Integration Test complete with status: ${currentBuild.currentResult}",
+                    body: "Unit and Integration Test Stage complete with status: ${currentBuild.currentResult}",
                     attachLog: true
                 )
                } 
@@ -29,6 +29,16 @@ pipeline{
         stage("Security Scan"){
             steps{
                 echo "This stage focuses on identifying weak spots in the code that can be exploited by attackers, therefore security analysis of the code will be carried out for static code, dynamic code - where the code is executed and running and may be vulnerable to DDoS, XSS and injection attacks - and the dependencies are also scanned. While there is no tool to cover everything, a tool such as Synopsys can cover a lot of security scans for static and dynamic code analysis."
+            }
+            post{
+               always{
+                emailtext (
+                    to: 'shinehar27@gmail.com',
+                    subject: "Security Scan Status",
+                    body: "Security Scan Stage complete with status: ${currentBuild.currentResult}",
+                    attachLog: true
+                )
+               } 
             }
             }
         stage("Deploy to Staging"){
