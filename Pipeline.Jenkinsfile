@@ -10,6 +10,16 @@ pipeline{
             steps{
                 echo "In this stage, the codes functions and smaller components are broken down (e.g: functions/classes) and unit tested individually to verify that it performs exactly as needed. Integration testing is carried out to ensure that all the components of the program work together without issues. In web application development, Selenium is used to create simulations of users interacting with different functions of the website to test website functionality."
             }
+            post{
+               always{
+                emailtext (
+                    to: 'shinehar27@gmail.com',
+                    subject: "Unit and Integration Test Status",
+                    body: "Unit and Integration Test complete with status: $(currentBuild.result)",
+                    attachLog: true
+                )
+               } 
+            }
             }
         stage("Code Analysis"){
             steps{
