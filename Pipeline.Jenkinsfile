@@ -35,7 +35,7 @@ pipeline{
                 emailext (
                     to: 'shinehar27@gmail.com',
                     subject: "Security Scan Status",
-                    body: "Security Scan complete with status: ${currentBuild.currentResult}",
+                    body: "Security Scan complete with status: ${currentBuild.currentResult}!",
                     attachLog: true
                 )
                } 
